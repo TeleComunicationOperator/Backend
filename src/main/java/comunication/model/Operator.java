@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,10 @@ public class Operator {
     @Size(min = 8, max = 8)
     @Column(unique = true, nullable = false)
     private String phone;
+    @Email
+    private String email;
+    @Enumerated
+    private Type type;
     @OneToMany
     private List<KeyWord> keyWordList = new ArrayList<>();
 }

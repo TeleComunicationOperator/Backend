@@ -7,16 +7,22 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/operators")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*",allowedHeaders = "*")
 public class OperatorController {
     private final OperatorService operatorService;
 
     @GetMapping
     public ResponseEntity<List<Operator>> findAll(){
         return ResponseEntity.ok(operatorService.findAll());
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<Operator>> findById(@PathVariable Integer id){
+        return ResponseEntity.ok(operatorService.findById(id));
     }
     @PostMapping
     public ResponseEntity<Operator> save(@RequestBody Operator operator){
