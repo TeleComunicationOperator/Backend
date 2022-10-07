@@ -42,8 +42,9 @@ public class OperatorServiceImpl implements OperatorService {
         operatorUpdated.setName(operator.getName());
         operatorUpdated.setLastName(operator.getLastName());
         operatorUpdated.setDni(operator.getDni());
-        operatorUpdated.setPhone(operatorUpdated.getPhone());
+        operatorUpdated.setPhone(operator.getPhone());
         operatorUpdated.setKeyWordList(operator.getKeyWordList());
+        System.out.println(operatorUpdated);
         return operatorRepository.save(operatorUpdated);
     }
 

@@ -23,7 +23,7 @@ public class OperatorController {
         return ResponseEntity.ok(operatorService.save(operator));
     }
 
-    @PutMapping("/id/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Operator> update(@RequestBody Operator operator,@PathVariable Integer id){
         return ResponseEntity.ok(operatorService.update(operator,id));
     }
