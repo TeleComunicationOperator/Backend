@@ -1,9 +1,9 @@
-package murraco.controller;
+package comunication.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
 import lombok.RequiredArgsConstructor;
-import murraco.model.AppUser;
+import comunication.model.AppUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import murraco.dto.UserDataDTO;
-import murraco.dto.UserResponseDTO;
-import murraco.service.UserService;
+import comunication.dto.UserDataDTO;
+import comunication.dto.UserResponseDTO;
+import comunication.service.UserService;
 
 @RestController
 @RequestMapping("/users")

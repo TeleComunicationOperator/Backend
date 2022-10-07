@@ -1,4 +1,4 @@
-package murraco.exception;
+package comunication.exception;
 
 import java.io.IOException;
 import java.util.Map;

@@ -1,10 +1,10 @@
-package murraco.dto;
+package comunication.dto;
 
 import java.util.List;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import murraco.model.AppUserRole;
+import comunication.model.AppUserRole;
 
 @Data
 @NoArgsConstructor

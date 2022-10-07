@@ -1,4 +1,4 @@
-package murraco;
+package comunication;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
