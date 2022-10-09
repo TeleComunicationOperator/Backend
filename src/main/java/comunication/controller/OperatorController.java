@@ -24,6 +24,10 @@ public class OperatorController {
     public ResponseEntity<Optional<Operator>> findById(@PathVariable Integer id){
         return ResponseEntity.ok(operatorService.findById(id));
     }
+    @GetMapping("/email/{email}")
+    public ResponseEntity<Optional<Operator>> findById(@PathVariable String email){
+        return ResponseEntity.ok(operatorService.findByEmail(email));
+    }
     @PostMapping
     public ResponseEntity<Operator> save(@RequestBody Operator operator){
         return ResponseEntity.ok(operatorService.save(operator));

@@ -7,6 +7,7 @@ import java.util.Optional;
 
 public interface OperatorService {
     List<Operator> findAll();
+    Optional<Operator> findByEmail(String email);
     Optional<Operator> findById(Integer id);
     Operator save(Operator operator);
     Operator update(Operator operator, Integer id);

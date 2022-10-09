@@ -25,6 +25,11 @@ public class OperatorServiceImpl implements OperatorService {
     }
 
     @Override
+    public Optional<Operator> findByEmail(String email) {
+        return operatorRepository.findByEmail(email);
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public Optional<Operator> findById(Integer id) {
         return operatorRepository.findById(id);
