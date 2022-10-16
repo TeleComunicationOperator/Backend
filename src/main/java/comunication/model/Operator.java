@@ -12,6 +12,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
+@Table(name = "operator")
 public class Operator {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +26,7 @@ public class Operator {
     @Size(min = 8, max = 8)
     @Column(unique = true, nullable = false)
     private String dni;
-    @Size(min = 8, max = 8)
+    @Size(min = 9, max = 9)
     @Column(unique = true, nullable = false)
     private String phone;
     @Email

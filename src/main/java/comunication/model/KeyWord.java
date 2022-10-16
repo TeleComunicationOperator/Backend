@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 @Data
 @Entity
 @NoArgsConstructor
+@Table(name = "key_word")
 public class KeyWord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -24,10 +24,10 @@ public class UserService {
   private final JwtTokenProvider jwtTokenProvider;
   private final AuthenticationManager authenticationManager;
 
-  public String signin(String username, String password) {
+  public String signin(String email, String password) {
     try {
-      authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-      return jwtTokenProvider.createToken(username, userRepository.findByUsername(username).getAppUserRoles());
+      authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
+      return jwtTokenProvider.createToken(email, userRepository.findByEmail(email).getAppUserRoles());
     } catch (AuthenticationException e) {
       throw new CustomException("Invalid username/password supplied", HttpStatus.UNPROCESSABLE_ENTITY);
     }
@@ -45,22 +45,6 @@ public class UserService {
 
   public void delete(String username) {
     userRepository.deleteByUsername(username);
-  }
-
-  public AppUser search(String username) {
-    AppUser appUser = userRepository.findByUsername(username);
-    if (appUser == null) {
-      throw new CustomException("The user doesn't exist", HttpStatus.NOT_FOUND);
-    }
-    return appUser;
-  }
-
-  public AppUser whoami(HttpServletRequest req) {
-    return userRepository.findByUsername(jwtTokenProvider.getUsername(jwtTokenProvider.resolveToken(req)));
-  }
-
-  public String refresh(String username) {
-    return jwtTokenProvider.createToken(username, userRepository.findByUsername(username).getAppUserRoles());
   }
 
 }

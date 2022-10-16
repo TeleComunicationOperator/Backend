@@ -22,8 +22,8 @@ public class UserController {
   private final ModelMapper modelMapper;
 
   @PostMapping("/signin")
-  public String login(@RequestParam String username, @RequestParam String password) {
-    return userService.signin(username, password);
+  public String login(@RequestParam String email, @RequestParam String password) {
+    return userService.signin(email, password);
   }
 
   @PostMapping("/signup")
@@ -37,23 +37,4 @@ public class UserController {
     userService.delete(username);
     return username;
   }
-
-  @GetMapping(value = "/{username}")
-  @PreAuthorize("hasRole('ROLE_ADMIN')")
-  public UserResponseDTO search(@PathVariable String username) {
-    return modelMapper.map(userService.search(username), UserResponseDTO.class);
-  }
-
-  @GetMapping(value = "/me")
-  @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_CLIENT')")
-  public UserResponseDTO whoami(HttpServletRequest req) {
-    return modelMapper.map(userService.whoami(req), UserResponseDTO.class);
-  }
-
-  @GetMapping("/refresh")
-  @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_CLIENT')")
-  public String refresh(HttpServletRequest req) {
-    return userService.refresh(req.getRemoteUser());
-  }
-
 }

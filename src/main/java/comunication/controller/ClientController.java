@@ -1,6 +1,7 @@
 package comunication.controller;
 
 import comunication.model.Client;
+import comunication.model.SpeechDto;
 import comunication.service.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,5 +24,9 @@ public class ClientController {
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Client>> findAll(@PathVariable Integer id) {
         return ResponseEntity.ok(clientService.findById(id));
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Client> findAll(@PathVariable Integer id, @RequestBody SpeechDto speechDto) {
+        return ResponseEntity.ok(clientService.updateSpeechAndKeyWords(id,speechDto));
     }
 }
