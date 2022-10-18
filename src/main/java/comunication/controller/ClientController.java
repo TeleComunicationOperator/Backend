@@ -25,8 +25,8 @@ public class ClientController {
     public ResponseEntity<Optional<Client>> findAll(@PathVariable Integer id) {
         return ResponseEntity.ok(clientService.findById(id));
     }
-    @PutMapping("/{id}")
-    public ResponseEntity<Client> findAll(@PathVariable Integer id, @RequestBody SpeechDto speechDto) {
+    @PutMapping("/speech/{id}")
+    public ResponseEntity<Client> assignSpeech(@PathVariable Integer id, @RequestBody SpeechDto speechDto) {
         return ResponseEntity.ok(clientService.updateSpeechAndKeyWords(id,speechDto));
     }
 }

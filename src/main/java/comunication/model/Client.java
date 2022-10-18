@@ -20,5 +20,6 @@ public class Client {
     private String lastName;
     @ElementCollection
     private List<String> key = new ArrayList<>();
+    @Column(columnDefinition="TEXT")
     private String speech;
 }

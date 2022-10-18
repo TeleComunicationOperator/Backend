@@ -21,7 +21,7 @@ public class UserController {
   private final UserService userService;
   private final ModelMapper modelMapper;
 
-  @PostMapping("/signin")
+  @GetMapping("/signin")
   public String login(@RequestParam String email, @RequestParam String password) {
     return userService.signin(email, password);
   }
