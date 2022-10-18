@@ -18,6 +18,8 @@ public class Client {
     private String name;
     @Column(name = "last_name")
     private String lastName;
+    private String dni;
+    private String phone;
     @ElementCollection
     private List<String> key = new ArrayList<>();
     @Column(columnDefinition="TEXT")
