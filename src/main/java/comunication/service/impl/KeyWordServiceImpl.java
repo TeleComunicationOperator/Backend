@@ -29,6 +29,7 @@ public class KeyWordServiceImpl implements KeyWordService{
 
     @Override
     public KeyWord save(KeyWord keyWord) {
+        keyWord.setActive(true);
         return keyWordRepository.save(keyWord);
     }
 
@@ -37,6 +38,7 @@ public class KeyWordServiceImpl implements KeyWordService{
         Optional<KeyWord> registered = keyWordRepository.findById(id);
         KeyWord optional = registered.get();
         optional.setName(keyWord.getName());
+        optional.setActive(keyWord.getActive());
         return keyWordRepository.save(optional);
     }
 

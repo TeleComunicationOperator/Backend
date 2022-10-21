@@ -29,4 +29,8 @@ public class ClientController {
     public ResponseEntity<Client> assignSpeech(@PathVariable Integer id, @RequestBody SpeechDto speechDto) {
         return ResponseEntity.ok(clientService.updateSpeechAndKeyWords(id,speechDto));
     }
+    @GetMapping("/list/keys")
+    public ResponseEntity<List<Client>> findAllByKeys(@RequestBody List<String> keys){
+        return ResponseEntity.ok(clientService.findAllByKeys(keys));
+    }
 }

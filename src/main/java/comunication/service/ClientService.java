@@ -10,4 +10,5 @@ public interface ClientService {
     List<Client> findAll();
     Optional<Client> findById(Integer id);
     Client updateSpeechAndKeyWords(Integer id, SpeechDto speechDto);
+    List<Client> findAllByKeys(List<String> keys);
 }

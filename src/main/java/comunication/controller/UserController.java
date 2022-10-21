@@ -1,15 +1,13 @@
 package comunication.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import lombok.RequiredArgsConstructor;
 import comunication.model.AppUser;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import comunication.dto.UserDataDTO;
-import comunication.dto.UserResponseDTO;
 import comunication.service.UserService;
 
 @RestController
@@ -22,13 +20,18 @@ public class UserController {
   private final ModelMapper modelMapper;
 
   @GetMapping("/signin")
-  public String login(@RequestParam String email, @RequestParam String password) {
-    return userService.signin(email, password);
+  public ResponseEntity<String> login(@RequestParam String email, @RequestParam String password) {
+    return ResponseEntity.ok(userService.signin(email, password));
   }
 
   @PostMapping("/signup")
   public String signup(@RequestBody UserDataDTO user) {
     return userService.signup(modelMapper.map(user, AppUser.class));
+  }
+
+  @PutMapping("/update/{email}")
+  public ResponseEntity<AppUser> signup(@RequestBody AppUser appUser, @PathVariable String email) {
+    return ResponseEntity.ok(userService.update(email,appUser));
   }
 
   @DeleteMapping(value = "/{username}")
@@ -37,4 +40,5 @@ public class UserController {
     userService.delete(username);
     return username;
   }
+
 }

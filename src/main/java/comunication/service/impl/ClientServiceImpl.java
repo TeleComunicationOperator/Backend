@@ -36,4 +36,9 @@ public class ClientServiceImpl implements ClientService {
         clientUpdated.setKey(speechDto.getKeys());
         return clientRepository.save(clientUpdated);
     }
+
+    @Override
+    public List<Client> findAllByKeys(List<String> keys) {
+        return clientRepository.findAllByKeyInIgnoreCase(keys);
+    }
 }

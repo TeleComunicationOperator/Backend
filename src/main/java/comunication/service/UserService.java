@@ -1,6 +1,7 @@
 package comunication.service;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.text.html.Option;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,8 @@ import comunication.exception.CustomException;
 import comunication.model.AppUser;
 import comunication.repository.UserRepository;
 import comunication.configuration.security.JwtTokenProvider;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -42,7 +45,13 @@ public class UserService {
       throw new CustomException("Username is already in use", HttpStatus.UNPROCESSABLE_ENTITY);
     }
   }
-
+  public AppUser update(String actualEmail, AppUser appUser){
+    Optional<AppUser> registered= Optional.ofNullable(userRepository.findByEmail(actualEmail));
+    AppUser entity = registered.get();
+    entity.setEmail(appUser.getEmail());
+    entity.setPassword(passwordEncoder.encode(appUser.getPassword()));
+    return userRepository.save(entity);
+  }
   public void delete(String username) {
     userRepository.deleteByUsername(username);
   }
