@@ -15,7 +15,7 @@ public class KeyWord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Size(min = 4, max = 255, message = "Minimum name length: 4 characters")
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false)
     private String name;
     private Boolean active;
 }

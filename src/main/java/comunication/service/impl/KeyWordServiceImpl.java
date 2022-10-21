@@ -19,7 +19,7 @@ public class KeyWordServiceImpl implements KeyWordService{
 
     @Override
     public List<KeyWord> findAll() {
-        return keyWordRepository.findAll();
+        return keyWordRepository.findAllByOrderByIdAsc();
     }
 
     @Override
@@ -37,7 +37,6 @@ public class KeyWordServiceImpl implements KeyWordService{
     public KeyWord update(KeyWord keyWord, Integer id) {
         Optional<KeyWord> registered = keyWordRepository.findById(id);
         KeyWord optional = registered.get();
-        optional.setName(keyWord.getName());
         optional.setActive(keyWord.getActive());
         return keyWordRepository.save(optional);
     }
