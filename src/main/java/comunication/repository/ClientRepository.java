@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface ClientRepository extends JpaRepository<Client,Integer> {
-    List<Client> findAllByKeyInIgnoreCase(List<String> keys);
+    List<Client> findDistinctByKeyInIgnoreCase(List<String> keys);
 }
