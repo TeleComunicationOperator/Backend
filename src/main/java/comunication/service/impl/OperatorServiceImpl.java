@@ -21,7 +21,7 @@ public class OperatorServiceImpl implements OperatorService {
     @Override
     @Transactional(readOnly = true)
     public List<Operator> findAll() {
-        return operatorRepository.findAll();
+        return operatorRepository.findAllByOrderByIdAsc();
     }
 
     @Override
