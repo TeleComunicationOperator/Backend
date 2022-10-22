@@ -51,7 +51,6 @@ public class OperatorServiceImpl implements OperatorService {
         operatorUpdated.setType(operator.getType());
         operatorUpdated.setEmail(operator.getEmail());
         operatorUpdated.setKeyWordList(operator.getKeyWordList());
-        System.out.println(operatorUpdated);
         return operatorRepository.save(operatorUpdated);
     }
 

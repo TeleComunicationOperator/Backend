@@ -20,7 +20,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public List<Client> findAll() {
-        return clientRepository.findAll();
+        return clientRepository.findAllByOrderByIdAsc();
     }
 
     @Override

@@ -3,6 +3,8 @@ package comunication.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.swing.text.html.Option;
 
+import comunication.model.Operator;
+import comunication.repository.OperatorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,6 +25,7 @@ import java.util.Optional;
 public class UserService {
 
   private final UserRepository userRepository;
+  private final OperatorRepository operatorRepository;
   private final PasswordEncoder passwordEncoder;
   private final JwtTokenProvider jwtTokenProvider;
   private final AuthenticationManager authenticationManager;
@@ -50,6 +53,10 @@ public class UserService {
     AppUser entity = registered.get();
     entity.setEmail(appUser.getEmail());
     entity.setPassword(passwordEncoder.encode(appUser.getPassword()));
+    Optional<Operator> registered2 = operatorRepository.findByEmail(actualEmail);
+    Operator operatorUpdated = registered2.get();
+    operatorUpdated.setEmail(appUser.getEmail());
+    operatorRepository.save(operatorUpdated);
     return userRepository.save(entity);
   }
   public void delete(String username) {
