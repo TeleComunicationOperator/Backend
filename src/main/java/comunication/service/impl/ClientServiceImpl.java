@@ -41,4 +41,9 @@ public class ClientServiceImpl implements ClientService {
     public List<Client> findAllByKeys(List<String> keys) {
         return clientRepository.findDistinctByKeyInIgnoreCase(keys);
     }
+
+    @Override
+    public List<Client> findAllByName(String name) {
+        return clientRepository.findAllByName(name);
+    }
 }

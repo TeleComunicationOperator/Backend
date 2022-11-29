@@ -33,4 +33,8 @@ public class ClientController {
     public ResponseEntity<List<Client>> findAllByKeys(@RequestBody List<String> keys){
         return ResponseEntity.ok(clientService.findAllByKeys(keys));
     }
+    @GetMapping("/list/name")
+    public ResponseEntity<List<Client>> findAllByName(@RequestBody String name){
+        return ResponseEntity.ok(clientService.findAllByName(name));
+    }
 }
